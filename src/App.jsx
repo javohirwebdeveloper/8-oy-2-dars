@@ -7,20 +7,46 @@ const validationSchema = Yup.object().shape({
   first: Yup.string().required("First name is required"),
   middle: Yup.string().required("Middle name is required"),
   last: Yup.string().required("Last name is required"),
-  month: Yup.string().required("Month name is required"),
-  day: Yup.string().required("day name is required"),
-  year: Yup.string().required("year name is required"),
-  gender: Yup.string().required("gender name is required"),
-  street: Yup.string().required("Last name is required"),
-  last: Yup.string().required("Last name is required"),
-  last: Yup.string().required("Last name is required"),
-  gender: Yup.string().required("Jinsni tanlang"),
+  month: Yup.string().required("Month is required"),
+  day: Yup.string().required("day is required"),
+  year: Yup.string().required("year is required"),
+  gender: Yup.string().required("gender is required"),
+  address: Yup.string().required("Address is required"),
+  address2: Yup.string().required("Address 2 is required"),
+  city: Yup.string().required("City is required"),
+  state: Yup.string().required("State is required"),
+  postal: Yup.string().required("Postal / zip is required"),
+  email: Yup.string().required("E-mail is required"),
+  mobile: Yup.string().required("Mobile number is required"),
+  phone: Yup.string().required("Phone number is required"),
+  work: Yup.string().required("Work number is required"),
+  company: Yup.string().required("Company is required"),
+  courses: Yup.string().required("Courses is required"),
 });
 
-const  App = () => {
+const App = () => {
   const [selectedLi, setSelectedLi] = useState(null);
   const [selectedInput, setSelectedInput] = useState(null);
-  const initialValues = { name: "", email: "" };
+  const initialValues = {
+    first: "",
+    middle: "",
+    last: "",
+    month: "",
+    day: "",
+    year: "",
+    gender: "",
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
+    postal: "",
+    email: "",
+    mobile: "",
+    phone: "",
+    work: "",
+    company: "",
+    courses: "",
+  };
 
   const onSubmit = (values) => {
     console.log(values);
@@ -102,7 +128,7 @@ const  App = () => {
                         <ErrorMessage
                           name="first"
                           component="div"
-                          className="text-red-500 text-xs"
+                          className="text-red-500 text-xs h-3"
                         />
                         <label for="first_name" className="text-[11px]">
                           First Name
@@ -127,7 +153,7 @@ const  App = () => {
                         <ErrorMessage
                           name="middle"
                           component="div"
-                          className="text-red-500 text-xs"
+                          className="text-red-500 text-xs h-3"
                         />
 
                         <label for="middle_name" className="text-[11px]">
@@ -153,7 +179,7 @@ const  App = () => {
                         <ErrorMessage
                           name="last"
                           component="div"
-                          className="text-red-500 text-xs"
+                          className="text-red-500 text-xs h-3"
                         />
                         <label for="last_name" className="text-[11px]">
                           Last Name
@@ -180,6 +206,10 @@ const  App = () => {
                         >
                           <select
                             id="month"
+                            name="month"
+                            value={values.month}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                             onClick={() => setSelectedInput("4")}
                             className={`${
                               selectedInput === "4"
@@ -201,6 +231,11 @@ const  App = () => {
                             <option value={11}>November</option>
                             <option value={12}>December</option>
                           </select>
+                          <ErrorMessage
+                            name="month"
+                            component="div"
+                            className="text-red-500 text-xs h-3"
+                          />
                           <label className="text-[12px] m-[8px_0_0_2] ">
                             Month
                           </label>
@@ -208,6 +243,10 @@ const  App = () => {
                         <span style={{ verticalAlign: "top" }}>
                           <select
                             id="day"
+                            name="day"
+                            value={values.day}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                             onClick={() => setSelectedInput("5")}
                             className={`${
                               selectedInput === "5"
@@ -248,6 +287,11 @@ const  App = () => {
                             <option value={30}>30</option>
                             <option value={31}>31</option>
                           </select>
+                          <ErrorMessage
+                            name="day"
+                            component="div"
+                            className="text-red-500 text-xs h-3"
+                          />
                           <label
                             for="day"
                             className="text-[12px] m-[8px_0_0_2] "
@@ -258,6 +302,10 @@ const  App = () => {
                         <span className="ml-2">
                           <select
                             id="year"
+                            name="year"
+                            value={values.year}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                             onClick={() => setSelectedInput("6")}
                             className={`${
                               selectedInput === "6"
@@ -372,6 +420,11 @@ const  App = () => {
                             <option value={1921}>1921</option>
                             <option value={1920}>1920</option>
                           </select>
+                          <ErrorMessage
+                            name="year"
+                            component="div"
+                            className="text-red-500 text-xs h-3"
+                          />
                           <label
                             for="year"
                             className="text-[12px] m-[8px_0_0_2] "
@@ -393,7 +446,11 @@ const  App = () => {
                     <label className=" m-[0_0_14px_2px] ">Gender</label>
                     <div className=" mt-[14px] ">
                       <select
-                        id="month"
+                        id="gender"
+                        name="gender"
+                        value={values.gender}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         onClick={() => setSelectedInput("7")}
                         className={`${
                           selectedInput === "7"
@@ -406,6 +463,11 @@ const  App = () => {
                         <option value="Female">Female</option>
                         <option value="N/A">N/A</option>
                       </select>
+                      <ErrorMessage
+                        name="gender"
+                        component="div"
+                        className="text-red-500 text-xs h-3"
+                      />
                     </div>
                   </div>
                 </div>
@@ -430,6 +492,10 @@ const  App = () => {
                             <input
                               type="text"
                               id="street"
+                              name="address"
+                              value={values.address}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               onClick={() => setSelectedInput("8")}
                               className={`${
                                 selectedInput === "8"
@@ -437,6 +503,11 @@ const  App = () => {
                                   : ""
                               } p-[0_10px] w-[100%] h-[40px] rounded outline-none  hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-[#015875] hover:border-2 border  border-[#367C96]`}
                               maxLength={100}
+                            />
+                            <ErrorMessage
+                              name="address"
+                              component="div"
+                              className="text-red-500 text-xs h-3"
                             />
                             <label
                               className=" text-[12px] m-[11px_0_0_2px] "
@@ -453,6 +524,10 @@ const  App = () => {
                             <input
                               type="text"
                               id="line"
+                              name="address2"
+                              value={values.address2}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               onClick={() => setSelectedInput("9")}
                               className={`${
                                 selectedInput === "9"
@@ -460,6 +535,11 @@ const  App = () => {
                                   : ""
                               } p-[0_10px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[100%] h-[40px] border rounded outline-none border-[#367C96]`}
                               maxLength={100}
+                            />
+                            <ErrorMessage
+                              name="address2"
+                              component="div"
+                              className="text-red-500 text-xs h-3"
                             />
                             <label
                               for="line"
@@ -476,6 +556,10 @@ const  App = () => {
                             <input
                               type="text"
                               id="city"
+                              name="city"
+                              value={values.city}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               onClick={() => setSelectedInput("10")}
                               className={`${
                                 selectedInput === "10"
@@ -483,6 +567,11 @@ const  App = () => {
                                   : ""
                               } p-[0_10px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[100%] h-[40px] border rounded outline-none border-[#367C96]`}
                               maxLength={60}
+                            />
+                            <ErrorMessage
+                              name="city"
+                              component="div"
+                              className="text-red-500 text-xs h-3"
                             />
                             <label
                               for="city"
@@ -497,6 +586,10 @@ const  App = () => {
                             <input
                               type="text"
                               id="state"
+                              name="state"
+                              value={values.state}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               onClick={() => setSelectedInput("11")}
                               className={`${
                                 selectedInput === "11"
@@ -504,6 +597,11 @@ const  App = () => {
                                   : ""
                               } p-[0_10px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[100%] h-[40px] border rounded outline-none border-[#367C96]`}
                               maxLength={60}
+                            />
+                            <ErrorMessage
+                              name="state"
+                              component="div"
+                              className="text-red-500 text-xs h-3"
                             />
                             <label
                               for="state"
@@ -520,6 +618,10 @@ const  App = () => {
                             <input
                               type="text"
                               id="zip"
+                              name="postal"
+                              value={values.postal}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               onClick={() => setSelectedInput("12")}
                               className={`${
                                 selectedInput === "12"
@@ -527,6 +629,11 @@ const  App = () => {
                                   : ""
                               } p-[0_10px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[100%] h-[40px] border rounded outline-none border-[#367C96]`}
                               maxLength={20}
+                            />
+                            <ErrorMessage
+                              name="postal"
+                              component="div"
+                              className="text-red-500 text-xs h-3"
                             />
                             <label
                               for="zip"
@@ -555,14 +662,22 @@ const  App = () => {
                         <input
                           type="email"
                           id="input_27_full"
+                          name="email"
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="ex: myname@example.com"
-                          name="q27_mobileNumber[full]"
                           onClick={() => setSelectedInput("14")}
                           className={`${
                             selectedInput === "14"
                               ? "button-hover border-[#015875] border-2 duration-200"
                               : ""
                           } p-[0_10px] mt-[14px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[310px] h-[40px] border rounded outline-none border-[#367C96]`}
+                        />
+                        <ErrorMessage
+                          name="email"
+                          component="div"
+                          className="text-red-500 text-xs h-3"
                         />
                         <label
                           for="email"
@@ -587,14 +702,22 @@ const  App = () => {
                         <input
                           type="tel"
                           id="input_27_full"
+                          name="mobile"
+                          value={values.mobile}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="(000) 000-0000"
-                          name="q27_mobileNumber[full]"
                           onClick={() => setSelectedInput("15")}
                           className={`${
                             selectedInput === "13"
                               ? "button-hover border-[#015875] border-2 duration-200"
                               : ""
                           } p-[0_10px] mt-[14px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[310px] h-[40px] border rounded outline-none border-[#367C96]`}
+                        />
+                        <ErrorMessage
+                          name="mobile"
+                          component="div"
+                          className="text-red-500 text-xs h-3"
                         />
                       </span>
                     </div>
@@ -615,6 +738,10 @@ const  App = () => {
                         <input
                           type="tel"
                           id="input_25_full"
+                          name="phone"
+                          value={values.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           onClick={() => setSelectedInput("16")}
                           className={`${
                             selectedInput === "16"
@@ -622,6 +749,11 @@ const  App = () => {
                               : ""
                           } p-[0_10px] mt-[14px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[310px] h-[40px] border rounded outline-none border-[#367C96]`}
                           placeholder="(000) 000-0000"
+                        />
+                        <ErrorMessage
+                          name="phone"
+                          component="div"
+                          className="text-red-500 text-xs h-3"
                         />
                       </span>
                     </div>
@@ -643,6 +775,10 @@ const  App = () => {
                         <input
                           type="tel"
                           id="input_26_full"
+                          name="work"
+                          value={values.work}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           onClick={() => setSelectedInput("17")}
                           className={`${
                             selectedInput === "17"
@@ -650,6 +786,11 @@ const  App = () => {
                               : ""
                           } p-[0_10px] mt-[14px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[310px] h-[40px] border rounded outline-none border-[#367C96]`}
                           placeholder="(000) 000-0000"
+                        />
+                        <ErrorMessage
+                          name="work"
+                          component="div"
+                          className="text-red-500 text-xs h-3"
                         />
                       </span>
                     </div>
@@ -669,6 +810,10 @@ const  App = () => {
                       <input
                         type="text"
                         id="input_14"
+                        name="company"
+                        value={values.company}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         onClick={() => setSelectedInput("18")}
                         className={`${
                           selectedInput === "18"
@@ -676,6 +821,11 @@ const  App = () => {
                             : ""
                         } p-[0_10px] mt-[14px] hover:shadow-[0_0_0_2px_hsl(from_#005875_h_s_l/50%)] hover:border-2 hover:border-[#015875]  w-[310px] h-[40px] border rounded outline-none border-[#367C96]`}
                         size={310}
+                      />{" "}
+                      <ErrorMessage
+                        name="company"
+                        component="div"
+                        className="text-red-500 text-xs h-3"
                       />
                     </div>
                   </div>
@@ -694,6 +844,10 @@ const  App = () => {
                       data-layout="half"
                     >
                       <select
+                        name="courses"
+                        value={values.courses}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         onClick={() => setSelectedInput("19")}
                         className={`${
                           selectedInput === "19"
@@ -719,6 +873,11 @@ const  App = () => {
                         <option value="Math 101">Math 101</option>
                         <option value="Math 102">Math 102</option>
                       </select>
+                      <ErrorMessage
+                        name="courses"
+                        component="div"
+                        className="text-red-500 text-xs h-3"
+                      />
                     </div>
                   </div>
                 </div>
@@ -794,6 +953,6 @@ const  App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
